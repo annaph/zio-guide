@@ -1,0 +1,2 @@
+# zionomicon
+Learn Scala ZIO
