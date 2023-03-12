@@ -14,6 +14,7 @@ ThisBuild / scalacOptions ++= Seq(
 )
 
 ThisBuild / fork := true
+ThisBuild / run / connectInput := true
 
 val zioVersion = "2.0.6"
 
