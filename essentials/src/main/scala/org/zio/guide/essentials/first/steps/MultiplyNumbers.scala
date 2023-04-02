@@ -1,4 +1,4 @@
-package org.zio.guide.essentials
+package org.zio.guide.essentials.first.steps
 
 import zio.{Console, Scope, Task, UIO, ZIO, ZIOAppArgs, ZIOAppDefault}
 

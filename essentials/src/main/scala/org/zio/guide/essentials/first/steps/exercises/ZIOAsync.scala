@@ -1,6 +1,6 @@
-package org.zio.guide.essentials.exercises
+package org.zio.guide.essentials.first.steps.exercises
 
-import org.zio.guide.essentials.exercises.Implicits.StringOps
+import org.zio.guide.essentials.first.steps.exercises.Implicits.StringOps
 import zio.{Console, Scope, Task, ZIO, ZIOAppArgs, ZIOAppDefault}
 
 import scala.util.{Failure, Success, Try}

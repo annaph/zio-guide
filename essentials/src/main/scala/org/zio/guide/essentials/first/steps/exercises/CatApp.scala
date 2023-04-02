@@ -1,7 +1,7 @@
-package org.zio.guide.essentials.exercises
+package org.zio.guide.essentials.first.steps.exercises
 
-import org.zio.guide.essentials.exercises.FileOps.readFile
-import org.zio.guide.essentials.exercises.Implicits.StringOps
+import org.zio.guide.essentials.first.steps.exercises.FileOps.readFile
+import org.zio.guide.essentials.first.steps.exercises.Implicits.StringOps
 import zio.{Console, Scope, ZIO, ZIOAppArgs, ZIOAppDefault}
 
 object CatApp extends ZIOAppDefault {

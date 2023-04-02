@@ -20,7 +20,9 @@ val zioVersion = "2.0.6"
 
 ThisBuild / libraryDependencies ++= Seq(
   "dev.zio" %% "zio" % zioVersion,
-  "dev.zio" %% "zio-streams" % zioVersion
+  "dev.zio" %% "zio-streams" % zioVersion,
+  "dev.zio" %% "zio-test" % zioVersion % Test,
+  "dev.zio" %% "zio-test-sbt" % zioVersion % Test
 )
 
 lazy val root = project.in(file("."))

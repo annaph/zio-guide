@@ -1,6 +1,6 @@
-package org.zio.guide.essentials.exercises
+package org.zio.guide.essentials.first.steps.exercises
 
-import org.zio.guide.essentials.exercises.Implicits.StringOps
+import org.zio.guide.essentials.first.steps.exercises.Implicits.StringOps
 
 import scala.annotation.tailrec
 import scala.collection.mutable
