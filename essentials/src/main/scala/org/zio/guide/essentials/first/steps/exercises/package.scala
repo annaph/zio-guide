@@ -8,6 +8,9 @@ package object exercises {
       def withGreenBackground: String =
         s"${Console.RESET}${Console.GREEN}$str${Console.RESET}"
 
+      def withMagentaBackground: String =
+        s"${Console.RESET}${Console.MAGENTA}$str${Console.RESET}"
+
       def withRedBackground: String =
         s"${Console.RESET}${Console.RED}$str${Console.RESET}"
     }
