@@ -28,8 +28,9 @@ ThisBuild / libraryDependencies ++= Seq(
 lazy val root = project.in(file("."))
   .settings(name := "zio-guide")
   .aggregate(
-    essentials
+    essentials,
+    parallelismAndConcurrency
   )
 
 lazy val essentials = project.in(file("essentials"))
-
+lazy val parallelismAndConcurrency = project.in(file("parallelism-and-concurrency"))

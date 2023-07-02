@@ -10,4 +10,7 @@ The source code contains different modules for the following chapters:
 1. _Essentials_ chapters  
    module name: **essentials**
 
-2. ???
+2. _Parallelism And Concurrency_ chapters  
+   module name: **parallelism-and-concurrency**
+
+3. ???
