@@ -10,13 +10,19 @@ ThisBuild / scalacOptions ++= Seq(
   "-encoding", "utf8",
   "-deprecation",
   "-feature",
-  "-unchecked"
+  "-unchecked",
+  "-Xfatal-warnings"
 )
 
 ThisBuild / fork := true
 ThisBuild / run / connectInput := true
 
 val zioVersion = "2.0.6"
+val http4sVersion = "0.23.20"
+val http4sBlazeVersion = "0.23.15"
+val zioInteropCatsVersion = "23.0.03"
+val logbackClasscVersion = "1.4.8"
+val jansiVersion = "2.4.0"
 
 ThisBuild / libraryDependencies ++= Seq(
   "dev.zio" %% "zio" % zioVersion,
@@ -25,12 +31,22 @@ ThisBuild / libraryDependencies ++= Seq(
   "dev.zio" %% "zio-test-sbt" % zioVersion % Test
 )
 
-lazy val root = project.in(file("."))
+lazy val root = project
+  .in(file("."))
   .settings(name := "zio-guide")
   .aggregate(
     essentials,
     parallelismAndConcurrency
   )
 
-lazy val essentials = project.in(file("essentials"))
+lazy val essentials = project
+  .in(file("essentials"))
+  .settings(
+    libraryDependencies += "org.http4s" %% "http4s-dsl" % http4sVersion,
+    libraryDependencies += "org.http4s" %% "http4s-blaze-server" % http4sBlazeVersion,
+    libraryDependencies += "dev.zio" %% "zio-interop-cats" % zioInteropCatsVersion,
+    libraryDependencies += "ch.qos.logback" % "logback-classic" % logbackClasscVersion,
+    libraryDependencies += "org.fusesource.jansi" % "jansi" % jansiVersion
+  )
+
 lazy val parallelismAndConcurrency = project.in(file("parallelism-and-concurrency"))
