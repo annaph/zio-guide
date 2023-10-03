@@ -6,7 +6,7 @@ import zio.{Console, Scope, Task, UIO, ZIO, ZIOAppArgs, ZIOAppDefault}
 import java.util.concurrent.atomic.AtomicBoolean
 import scala.annotation.tailrec
 
-object InterruptSideEffectingCode extends ZIOAppDefault {
+object InterruptSideEffectingCodeApp extends ZIOAppDefault {
 
   private lazy val parent: UIO[Unit] =
     for {

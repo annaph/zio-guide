@@ -36,7 +36,8 @@ lazy val root = project
   .settings(name := "zio-guide")
   .aggregate(
     essentials,
-    parallelismAndConcurrency
+    parallelismAndConcurrency,
+    concurrentStructures
   )
 
 lazy val essentials = project
@@ -50,3 +51,4 @@ lazy val essentials = project
   )
 
 lazy val parallelismAndConcurrency = project.in(file("parallelism-and-concurrency"))
+lazy val concurrentStructures = project.in(file("concurrent-structures"))
