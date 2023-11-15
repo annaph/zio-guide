@@ -13,4 +13,6 @@ The source code contains different modules for the following chapters:
 2. _Parallelism And Concurrency_ chapters  
    module name: **parallelism-and-concurrency**
 
-3. ???
+3. _Concurrent Structures_ chapters  
+   module name: **concurrent-structures**
+
