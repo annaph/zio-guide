@@ -1,24 +1,25 @@
 package org.zio.guide.concurrent
 
-import scala.concurrent.duration._
+import zio.Duration
+
+import java.util.concurrent.TimeUnit
 
 package object structures {
 
   object Implicits {
 
+    implicit val oneSecond: Duration = Duration(1, TimeUnit.SECONDS)
+
+    implicit val threeSeconds: Duration = Duration(3, TimeUnit.SECONDS)
+
+    implicit val oneMinute: Duration = Duration(1, TimeUnit.MINUTES)
+
     implicit class StringOps(str: String) {
       def withGreenBackground: String =
         s"${Console.RESET}${Console.GREEN}$str${Console.RESET}"
 
-      def withMagentaBackground: String =
-        s"${Console.RESET}${Console.MAGENTA}$str${Console.RESET}"
-
-      def withRedBackground: String =
-        s"${Console.RESET}${Console.RED}$str${Console.RESET}"
-    }
-
-    implicit class IntOps(n: Int) {
-      def seconds: zio.Duration = zio.Duration.fromScala(n.second)
+      def withBlueBackground: String =
+        s"${Console.RESET}${Console.BLUE}$str${Console.RESET}"
     }
   }
 
