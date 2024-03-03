@@ -37,7 +37,8 @@ lazy val root = project
   .aggregate(
     essentials,
     parallelismAndConcurrency,
-    concurrentStructures
+    concurrentStructures,
+    resourceHandling
   )
 
 lazy val essentials = project
@@ -52,3 +53,4 @@ lazy val essentials = project
 
 lazy val parallelismAndConcurrency = project.in(file("parallelism-and-concurrency"))
 lazy val concurrentStructures = project.in(file("concurrent-structures"))
+lazy val resourceHandling = project.in(file("resource-handling"))

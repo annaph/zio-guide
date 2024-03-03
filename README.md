@@ -16,3 +16,5 @@ The source code contains different modules for the following chapters:
 3. _Concurrent Structures_ chapters  
    module name: **concurrent-structures**
 
+4. _Resource Handling_ chapters  
+   module name: **resource-handling**
