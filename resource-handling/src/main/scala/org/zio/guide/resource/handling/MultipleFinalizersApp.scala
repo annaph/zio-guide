@@ -20,7 +20,7 @@ object MultipleFinalizersApp extends ZIOAppDefault {
       for {
         mlsTeamsReader <- mlsTeamsFile
         numOfTeams <- analyze(mlsTeamsReader)
-        _ <- Console.printLine(line = s"~> Number of MLS football teams: $numOfTeams".withGreenBackground)
+        _ <- Console.printLine(line = s"~> Number of MLS football teams: $numOfTeams".withGreenBackground).orDie
       } yield ()
     }
 

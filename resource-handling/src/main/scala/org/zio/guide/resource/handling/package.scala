@@ -6,6 +6,7 @@ import zio.{Duration, Task, UIO, ZIO, Console => ZIOConsole}
 import java.io.{BufferedReader, BufferedWriter, File, FileReader, FileWriter}
 import java.util.concurrent.TimeUnit
 import scala.annotation.tailrec
+import scala.collection.mutable.ListBuffer
 
 package object handling {
 
@@ -23,15 +24,17 @@ package object handling {
       .tap(_ => ZIOConsole.printLine(line = s"Reader closed.".withBlueBackground).orDie)
       .tapError { ex =>
         ZIOConsole.printLine(line = s"Error closing reader: ${ex.getMessage}".withRedBackground).orDie
-      }.orDie
+      }
+      .orDie
 
-  def openWriter(pathname: String): Task[BufferedWriter] = ZIO.attempt {
-    val file = new File(pathname)
-    val fileWriter = new FileWriter(file)
-    new BufferedWriter(fileWriter)
-  }.tap { _ =>
-    ZIOConsole.printLine(line = s"Writer for '$pathname' opened.".withBlueBackground).orDie
-  }
+  def openWriter(pathname: String): Task[BufferedWriter] =
+    ZIO.attempt {
+      val file = new File(pathname)
+      val fileWriter = new FileWriter(file)
+      new BufferedWriter(fileWriter)
+    }.tap { _ =>
+      ZIOConsole.printLine(line = s"Writer for '$pathname' opened.".withBlueBackground).orDie
+    }
 
   def closeWriter(writer: BufferedWriter): UIO[Unit] =
     ZIO
@@ -42,31 +45,51 @@ package object handling {
       }
       .orDie
 
-  def analyze(weatherData: BufferedReader, results: BufferedWriter): Task[Unit] = ZIO.attempt {
+  def analyzeWeatherData(weatherData: BufferedReader, results: BufferedWriter): Task[Unit] =
+    ZIO.attempt {
+      @tailrec
+      def go(week: Int = 0, day: Int = 0, sum: Float = 0.0f): Unit =
+        Option(weatherData.readLine()) match {
+          case Some(line) if day == 6 =>
+            val temperature = line.split(":").last.trim.toFloat
+
+            val str = s"week ${week + 1}: ${(sum + temperature) / 7}\n"
+            results.write(str)
+
+            go(week + 1)
+
+          case Some(line) =>
+            val temperature = line.split(":").last.trim.toFloat
+            go(week, day + 1, sum + temperature)
+
+          case None if week == 0 && day == 0 =>
+            ()
+
+          case None =>
+            val str = s"week ${week + 1}: ${sum / day}\n"
+            results.write(str)
+        }
+
+      go()
+    }
+
+  def analyzeF1TeamsData(f1TeamsReader: BufferedReader, take: Int = 9): Task[Unit] = {
     @tailrec
-    def go(week: Int = 0, day: Int = 0, sum: Float = 0.0f): Unit =
-      Option(weatherData.readLine()) match {
-        case Some(line) if day == 6 =>
-          val temperature = line.split(":").last.trim.toFloat
-
-          val str = s"week ${week + 1}: ${(sum + temperature) / 7}\n"
-          results.write(str)
-
-          go(week + 1)
-
-        case Some(line) =>
-          val temperature = line.split(":").last.trim.toFloat
-          go(week, day + 1, sum + temperature)
-
-        case None if week == 0 && day == 0 =>
-          ()
-
-        case None =>
-          val str = s"week ${week + 1}: ${sum / day}\n"
-          results.write(str)
+    def go(i: Int, acc: ListBuffer[String]): ListBuffer[String] =
+      if (i == take) acc else {
+        Option(f1TeamsReader.readLine()) match {
+          case Some(f1Team) => go(i + 1, acc :+ f1Team)
+          case None => acc
+        }
       }
 
-    go()
+    ZIO
+      .attempt(go(i = 0, ListBuffer.empty[String]))
+      .flatMap { f1Teams =>
+        ZIOConsole
+          .printLine(line = s"~> F1 teams: ${f1Teams.mkString("[", ", ", "]")}".withGreenBackground)
+          .orDie
+      }
   }
 
   object Implicits {
