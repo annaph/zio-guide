@@ -18,3 +18,6 @@ The source code contains different modules for the following chapters:
 
 4. _Resource Handling_ chapters  
    module name: **resource-handling**
+
+5. _Dependency Injection_ chapters  
+   module name: **dependency-injection**
