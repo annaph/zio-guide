@@ -21,3 +21,6 @@ The source code contains different modules for the following chapters:
 
 5. _Dependency Injection_ chapters  
    module name: **dependency-injection**
+
+6. _Software Transactional Memory_ chapters  
+   module name: **software-transactional-memory**

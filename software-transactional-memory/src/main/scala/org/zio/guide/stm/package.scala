@@ -1,12 +1,16 @@
-package org.zio.guide.stm.composing
+package org.zio.guide
 
 import zio.Duration
 
 import java.util.concurrent.TimeUnit
 
-package object atomicity {
+package object stm {
 
   object Implicits {
+
+    implicit val halfSecond: Duration = Duration(500, TimeUnit.MILLISECONDS)
+
+    implicit val oneSecond: Duration = Duration(1, TimeUnit.SECONDS)
 
     implicit val threeSeconds: Duration = Duration(3, TimeUnit.SECONDS)
 

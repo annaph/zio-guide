@@ -1,6 +1,6 @@
 package org.zio.guide.stm.composing.atomicity
 
-import org.zio.guide.stm.composing.atomicity.Implicits.{StringOps, threeSeconds}
+import org.zio.guide.stm.Implicits.{StringOps, threeSeconds}
 import zio.stm.{STM, TRef}
 import zio.{Scope, ZIO, ZIOAppArgs, ZIOAppDefault}
 

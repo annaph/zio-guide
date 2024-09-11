@@ -1,12 +1,12 @@
 package org.zio.guide.stm.composing.atomicity
 
-import org.zio.guide.stm.composing.atomicity.Implicits.StringOps
+import org.zio.guide.stm.Implicits.StringOps
 import zio.stm.{STM, TRef}
 import zio.{Console, Scope, UIO, ZIO, ZIOAppArgs, ZIOAppDefault}
 
 object TransferFundsApp extends ZIOAppDefault {
 
-  override def run: ZIO[ZIOAppArgs with Scope, Nothing, Unit] = {
+  override def run: ZIO[ZIOAppArgs with Scope, Nothing, Unit] =
     for {
       anna <- TRef.make(0).commit
       stacey <- TRef.make(50).commit
@@ -19,7 +19,6 @@ object TransferFundsApp extends ZIOAppDefault {
       _ <- transfer2.await
       _ <- printAccounts(title = "After transfers", accounts = "anna" -> anna, "stacey" -> stacey, "nicole" -> nicole)
     } yield ()
-  }
 
   private def transfer(from: TRef[Int], to: TRef[Int], amount: Int): STM[Throwable, Unit] =
     from.get.flatMap { fromBalance =>

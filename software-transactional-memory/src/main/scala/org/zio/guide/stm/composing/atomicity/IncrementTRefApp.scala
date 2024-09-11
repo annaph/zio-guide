@@ -1,6 +1,6 @@
 package org.zio.guide.stm.composing.atomicity
 
-import org.zio.guide.stm.composing.atomicity.Implicits.StringOps
+import org.zio.guide.stm.Implicits.StringOps
 import zio.stm.TRef
 import zio.{Console, Scope, UIO, ZIO, ZIOAppArgs, ZIOAppDefault}
 
