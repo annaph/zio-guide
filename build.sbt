@@ -40,7 +40,8 @@ lazy val root = project
     concurrentStructures,
     resourceHandling,
     dependencyInjection,
-    softwareTransactionalMemory
+    softwareTransactionalMemory,
+    advancedErrorManagement
   )
 
 lazy val essentials = project
@@ -58,3 +59,4 @@ lazy val concurrentStructures = project.in(file("concurrent-structures"))
 lazy val resourceHandling = project.in(file("resource-handling"))
 lazy val dependencyInjection = project.in(file("dependency-injection"))
 lazy val softwareTransactionalMemory = project.in(file("software-transactional-memory"))
+lazy val advancedErrorManagement = project.in(file("advanced-error-management"))

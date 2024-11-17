@@ -24,3 +24,6 @@ The source code contains different modules for the following chapters:
 
 6. _Software Transactional Memory_ chapters  
    module name: **software-transactional-memory**
+
+7. _Advanced Error Management_ chapters  
+   module name: **advanced-error-management**
