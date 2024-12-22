@@ -18,6 +18,7 @@ ThisBuild / fork := true
 ThisBuild / run / connectInput := true
 
 val zioVersion = "2.0.6"
+val zioStreamVersion = "2.1.13"
 val http4sVersion = "0.23.20"
 val http4sBlazeVersion = "0.23.15"
 val zioInteropCatsVersion = "23.0.03"
@@ -60,3 +61,9 @@ lazy val resourceHandling = project.in(file("resource-handling"))
 lazy val dependencyInjection = project.in(file("dependency-injection"))
 lazy val softwareTransactionalMemory = project.in(file("software-transactional-memory"))
 lazy val advancedErrorManagement = project.in(file("advanced-error-management"))
+
+lazy val streaming = project
+  .in(file("streaming"))
+  .settings(
+    libraryDependencies += "dev.zio" %% "zio-streams" % zioStreamVersion
+  )

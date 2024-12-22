@@ -27,3 +27,6 @@ The source code contains different modules for the following chapters:
 
 7. _Advanced Error Management_ chapters  
    module name: **advanced-error-management**
+
+8. _Streaming_ chapters  
+   module name: **streaming**
