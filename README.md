@@ -30,3 +30,6 @@ The source code contains different modules for the following chapters:
 
 8. _Streaming_ chapters  
    module name: **streaming**
+
+9. _Testing_ chapters  
+   module name: **testing**

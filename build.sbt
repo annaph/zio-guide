@@ -42,7 +42,8 @@ lazy val root = project
     resourceHandling,
     dependencyInjection,
     softwareTransactionalMemory,
-    advancedErrorManagement
+    advancedErrorManagement,
+    testing
   )
 
 lazy val essentials = project
@@ -61,6 +62,7 @@ lazy val resourceHandling = project.in(file("resource-handling"))
 lazy val dependencyInjection = project.in(file("dependency-injection"))
 lazy val softwareTransactionalMemory = project.in(file("software-transactional-memory"))
 lazy val advancedErrorManagement = project.in(file("advanced-error-management"))
+lazy val testing = project.in(file("testing"))
 
 lazy val streaming = project
   .in(file("streaming"))
