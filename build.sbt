@@ -4,7 +4,7 @@ ThisBuild / description := "Scala ZIO Guide"
 
 ThisBuild / version := "1.0.0"
 
-ThisBuild / scalaVersion := "2.13.10"
+ThisBuild / scalaVersion := "2.13.13"
 
 ThisBuild / scalacOptions ++= Seq(
   "-encoding", "utf8",
