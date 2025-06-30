@@ -43,6 +43,7 @@ lazy val root = project
     dependencyInjection,
     softwareTransactionalMemory,
     advancedErrorManagement,
+    streaming,
     testing
   )
 
@@ -62,10 +63,15 @@ lazy val resourceHandling = project.in(file("resource-handling"))
 lazy val dependencyInjection = project.in(file("dependency-injection"))
 lazy val softwareTransactionalMemory = project.in(file("software-transactional-memory"))
 lazy val advancedErrorManagement = project.in(file("advanced-error-management"))
-lazy val testing = project.in(file("testing"))
 
 lazy val streaming = project
   .in(file("streaming"))
   .settings(
     libraryDependencies += "dev.zio" %% "zio-streams" % zioStreamVersion
+  )
+
+lazy val testing = project
+  .in(file("testing"))
+  .settings(
+    libraryDependencies += "dev.zio" %% "zio-test" % zioVersion
   )
