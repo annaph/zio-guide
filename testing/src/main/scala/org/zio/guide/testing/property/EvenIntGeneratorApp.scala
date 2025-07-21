@@ -1,8 +1,8 @@
 package org.zio.guide.testing.property
 
-import org.zio.guide.testing.Implicits.StringOps
+import org.zio.guide.testing.debug
 import zio.test.Gen
-import zio.{Console, Scope, ZIO, ZIOAppArgs, ZIOAppDefault}
+import zio.{Scope, ZIO, ZIOAppArgs, ZIOAppDefault}
 
 object EvenIntGeneratorApp extends ZIOAppDefault {
 
@@ -15,10 +15,9 @@ object EvenIntGeneratorApp extends ZIOAppDefault {
       }
 
   override def run: ZIO[ZIOAppArgs with Scope, Nothing, Unit] =
-    for {
-      sample <- genEvenInt.runCollectN(n = 7)
-      _ <- Console.printLine(s"Generated sample\n${sample mkString "\n"}".withGreenBackground).orDie
-    } yield ()
+    debug {
+      genEvenInt
+    }
 
 }
 

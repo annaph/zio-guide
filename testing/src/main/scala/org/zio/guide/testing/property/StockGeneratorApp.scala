@@ -1,8 +1,8 @@
 package org.zio.guide.testing.property
 
-import org.zio.guide.testing.Implicits.StringOps
+import org.zio.guide.testing.debug
 import zio.test.Gen
-import zio.{Console, Scope, ZIO, ZIOAppArgs, ZIOAppDefault}
+import zio.{Scope, ZIO, ZIOAppArgs, ZIOAppDefault}
 
 import scala.math.BigDecimal.RoundingMode
 
@@ -35,10 +35,9 @@ object StockGeneratorApp extends ZIOAppDefault {
     } yield Stock(ticker, price, currency)
 
   override def run: ZIO[ZIOAppArgs with Scope, Nothing, Unit] =
-    for {
-      sample <- genStock.runCollectN(n = 7)
-      _ <- Console.printLine(line = s"Generated sample\n${sample mkString "\n"}".withGreenBackground).orDie
-    } yield ()
+    debug {
+      genStock
+    }
 
   sealed trait Currency
 
